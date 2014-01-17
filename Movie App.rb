@@ -4,53 +4,40 @@ require 'typhoeus'
 require 'json'
 
 get '/' do
-  erb :index
+    erb :index
 end
 
 post '/result' do
-  # map of ids or names to values.  whatever put into text box it is the value of the key :movie
-  query = params[:movie]
+    # map of ids or names to values.  whatever put into text box it is the value of the key :movie
+    query = params[:movie]
 
-  
-  # params is not a ruby thing, it is _______________
-  response = Typhoeus.get("http://www.omdbapi.com/", :params => {:s => query})
-  # result we get back is just a string, not an object.  so parse
-  result = JSON.parse(response.body)
+    response = Typhoeus.get("http://www.omdbapi.com/", params: {:s => query})
+    # result we get back is just a string, not an object.  so parse
+    result = JSON.parse(response.body)
 
-  movie_arr = []
-  result["Search"].each do |movie| 
-    movie_arr << [movie["Year"], movie["Title"], movie["imdbID"]]
-  end
-  
-  movie_arr.sort!
-
+    @movies = result["Search"].sort_by { |movie| movie["Year"] }
+    
+    erb :result
+end
   
 
-  # Modify the html output so that a list of movies is provided.
-  html_str = "<html><head><title>Movie Search Results</title></head><body><h1>Movie Results</h1><ul>"
-  movie_arr.each do |movie|
-    html_str += "<li><a href = /poster/#{movie[2]}> #{movie[1]}, #{movie[0]}</a></li>"
-  
-    erb :result # should this be result or results?
-  end
-  
+get '/poster/:imdb' do |imdb_id|
 
-  html_str << "</ul></body></html>"
+    response = Typhoeus.get("http://www.omdbapi.com/", params: {:i => imdb_id})
+    result = JSON.parse(response.body)
+
+    erb :poster
 end
 
-# <a href = "/poster/:imdb"> 
 
 
 
 
-get '/poster/:imdbID' do |imdb_id|
-  # Make another api call here to get the url of the poster.
-  response = Typhoeus.get("http://www.omdbapi.com/", :params => {:i => imdb_id})
-  result = JSON.parse(response.body)
-  # result["Search"].each do |movie|
-  html_str = "<html><head><title>Movie Poster</title></head><body><h1>Movie Poster</h1>\n"
-  html_str = "<br> <img src =#{result["Poster"]}> <br>"
-  html_str += '<a href="/">New Search</a></body></html>'
 
 
-end
+  # # Make another api call here to get the url of the poster.
+  
+  # # result["Search"].each do |movie|
+  # html_str = "<html><head><title>Movie Poster</title></head><body><h1>Movie Poster</h1>\n"
+  # html_str = "<br> <img src =#{result["Poster"]}> <br>"
+  # html_str += '<a href="/">New Search</a></body></html>'
