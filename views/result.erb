@@ -1,11 +1,12 @@
 <h1>Movie Results</h1>
 <ul>
 
-<% @movies.each do |movie| %>
-<li><a href="/poster/<%= movie["imdbID"]%>'> <%= movie["Title"] %>, <%= movie["Year"] %></a>
-</li>
-<% end %>
-
+	<% @movies.each do |movie| %>
+		<li>
+			<a href="/poster/<%= movie["imdbID"]%>"> <%= movie["Title"] %>, <%= movie["Year"] %></a>
+		</li>
+	<% end %>
 
 </ul>
+
 <a href="/">New Search</a>

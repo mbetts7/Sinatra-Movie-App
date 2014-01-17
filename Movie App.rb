@@ -11,7 +11,7 @@ post '/result' do
     # map of ids or names to values.  whatever put into text box it is the value of the key :movie
     query = params[:movie]
 
-    response = Typhoeus.get("http://www.omdbapi.com/", params: {:s => query})
+    response = Typhoeus.get("http://www.omdbapi.com/", params: {s: query})
     # result we get back is just a string, not an object.  so parse
     result = JSON.parse(response.body)
 
@@ -23,8 +23,8 @@ end
 
 get '/poster/:imdb' do |imdb_id|
 
-    response = Typhoeus.get("http://www.omdbapi.com/", params: {:i => imdb_id})
-    result = JSON.parse(response.body)
+    response = Typhoeus.get("http://www.omdbapi.com/", params: {i: imdb_id})
+    @movie = JSON.parse(response.body) #must set to @movie!!!!!!!!!!!!!
 
     erb :poster
 end

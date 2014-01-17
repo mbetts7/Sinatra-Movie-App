@@ -20,3 +20,10 @@ Center the poster and text on the poster page in the middle of the screen.  Also
 
 4) Phase 4: Make your app mobile first. Delmer's lecture on Friday will help with this.
 
+
+
+QUESTIONS:
+
+- what is this line?
+
+- can you comment in erb?
