@@ -27,3 +27,7 @@ QUESTIONS:
 - what is this line?
 
 - can you comment in erb?
+
+- add nil class for empty search
+
+- convert date to a year?

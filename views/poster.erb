@@ -1,10 +1,14 @@
 <h1><%= @movie["Title"] %></h1>
-	<br>
-
-		<img src="<%= @movie["Poster"] == "N/A" ? "http://farm8.staticflickr.com/7172/6508022985_b22200ced0_z.jpg" : @movie["Poster"] %>" /> 
-	
-	<br>
-	<br>
-
 <a href="/">New Search</a>
-
+	<br>
+	<div class="container">
+				<img src="<%= @movie["Poster"] == "N/A" ? "No movie poster" : @movie["Poster"] %>" /> <br>
+				<%= @movie["Plot"] == "N/A" ? "" : "Plot: #{@movie["Plot"]}" %> <br>
+				<%= @movie["Year"] == "N/A" ? "" : "Released: #{@movie["Year"]}" %> <br>
+				<%= @movie["Rated"] == "N/A" ? "" : "Rated: #{@movie["Rated"]}" %> <br>
+				<%= @movie["Runtime"] == "N/A" ? "" : "Runtime: #{@movie["Runtime"]}" %> <br>
+				<%= @movie["Genre"] == "N/A" ? "" : "Genre: #{@movie["Genre"]}" %> <br>
+				<%= @movie["Director"] == "N/A" ? "" : "Director: #{@movie["Director"]}" %> <br>
+				<%= @movie["Actors"] == "N/A" ? "" : "Actors: #{@movie["Actors"]}" %> <br>
+	</div>
+	<br>
