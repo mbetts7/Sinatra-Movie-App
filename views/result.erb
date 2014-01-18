@@ -1,12 +1,21 @@
+<div class="container">
 <h1>Movie Results</h1>
-<ul>
+<div>
 
 	<% @movies.each do |movie| %>
-		<li>
-			<a href="/poster/<%= movie["imdbID"]%>"> <%= movie["Title"] %>, <%= movie["Year"] %></a>
-		</li>
+		<table class="table table-striped">
+			<tbody> 
+				<tr>
+					<td><a href="/poster/<%= movie["imdbID"]%>"> <%= movie["Title"] %>, <%= movie["Year"] %></a></td>
+				</tr>
+			</tbody>
+		</table>
 	<% end %>
 
-</ul>
+</div>
+	<button>
+		<a href="/">New Search</a>
+	</button>
+</div>
 
-<a href="/">New Search</a>
+

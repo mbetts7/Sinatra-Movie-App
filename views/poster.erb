@@ -1,14 +1,24 @@
-<h1><%= @movie["Title"] %></h1>
-<a href="/">New Search</a>
-	<br>
-	<div class="container">
-				<img src="<%= @movie["Poster"] == "N/A" ? "No movie poster" : @movie["Poster"] %>" /> <br>
-				<%= @movie["Plot"] == "N/A" ? "" : "Plot: #{@movie["Plot"]}" %> <br>
-				<%= @movie["Year"] == "N/A" ? "" : "Released: #{@movie["Year"]}" %> <br>
-				<%= @movie["Rated"] == "N/A" ? "" : "Rated: #{@movie["Rated"]}" %> <br>
-				<%= @movie["Runtime"] == "N/A" ? "" : "Runtime: #{@movie["Runtime"]}" %> <br>
-				<%= @movie["Genre"] == "N/A" ? "" : "Genre: #{@movie["Genre"]}" %> <br>
-				<%= @movie["Director"] == "N/A" ? "" : "Director: #{@movie["Director"]}" %> <br>
-				<%= @movie["Actors"] == "N/A" ? "" : "Actors: #{@movie["Actors"]}" %> <br>
+<div class="container">
+	<div class="col-xs-12">
+		<div class="row">
+			<h1><%= @movie["Title"] %></h1>
+			<img src="<%= @movie["Poster"] == "N/A" ? "No movie poster" : @movie["Poster"] %>" /> <br>
+		</div>
+		
+		<div class="row">
+			
+			<%= @movie["Plot"] == "N/A" ? "" : "<b>Plot: </b>#{@movie["Plot"]}" %> <br>
+			<%= @movie["Year"] == "N/A" ? "" : "<b>Released: </b>#{@movie["Year"]}" %> <br>
+			<%= @movie["Rated"] == "N/A" ? "" : "<b>Rated: </b>#{@movie["Rated"]}" %> <br>
+			<%= @movie["Runtime"] == "N/A" ? "" : "<b>Runtime: </b>#{@movie["Runtime"]}" %> <br>
+			<%= @movie["Genre"] == "N/A" ? "" : "<b>Genre: </b>#{@movie["Genre"]}" %> <br>
+			<%= @movie["Director"] == "N/A" ? "" : "<b>Director: </b>#{@movie["Director"]}" %> <br>
+			<%= @movie["Actors"] == "N/A" ? "" : "<b>Actors: </b>#{@movie["Actors"]}" %> <br>
+			<br>
+			<button class ="new_search">
+				<a href="/">New Search</a>
+			</button>
+		</div>
 	</div>
-	<br>
+</div>
+<br>
