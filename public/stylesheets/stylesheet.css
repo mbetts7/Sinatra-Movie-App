@@ -1,0 +1,15 @@
+.background {
+background-image:url('/images/hauntedhouse.jpg');
+max-width: 100%;
+background-repeat:no-repeat;
+color: white;
+}
+
+.results_background {
+	background-color: #c0392b;
+	color: white;
+}
+
+.container {
+	max-width: 800px;
+}

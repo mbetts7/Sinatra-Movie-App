@@ -1,8 +1,16 @@
-<body class="index_body">
-	<h1>Find a Movie!</h1>
-	  <form accept-charset="UTF-8" action="/result" method="post">
-	    <label for="movie">Search for:</label>
-	    <input id="movie" name="movie" type="text" />
-	    <input name="commit" type="submit" value="Search" /> 
-	  </form>
-  </body>
+<body class="background">
+<div class="container">
+	<h1>Find Your Movie!</h1>
+	<div>
+	<%if @bad_results %>
+		<p>Your search did not yield any results</p>
+	<% end %>
+	</div>
+
+		  <form accept-charset="UTF-8" action="/result" method="post">
+		    <label for="movie">Search for:</label>
+		    <input id="movie" name="movie" type="text" />
+		    <input name="commit" type="submit" value="Search" />
+		  </form>
+  </div>
+</body>

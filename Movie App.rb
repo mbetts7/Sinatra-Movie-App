@@ -14,8 +14,12 @@ post '/result' do
     response = Typhoeus.get("http://www.omdbapi.com/", params: {s: query})
     # result we get back is just a string, not an object.  so parse
     result = JSON.parse(response.body)
-    
-    @movies = result["Search"].sort_by { |movie| movie["Year"] }
+    if result["Search"] == nil
+      @bad_results = true
+      redirect '/'
+    else
+      @movies = result["Search"].sort_by { |movie| movie["Year"] }
+    end
     
     erb :result
 end
